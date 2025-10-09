@@ -1,0 +1,43 @@
+# Виртуальное окружение
+venv/
+env/
+ENV/
+.venv/
+
+# Файлы настроек среды
+*.env
+
+# Файлы Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Логи
+*.log
+
+# SQLite база данных (если локальная)
+db.sqlite3
+
+# Django stuff:
+media/
+staticfiles/
+static_root/
+*.pot
+*.pyc
+
+# Кэш и временные файлы
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS / Windows системные файлы
+.DS_Store
+Thumbs.db
