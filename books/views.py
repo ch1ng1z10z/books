@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from . import views
+from django.views.generic import ListView, DetailView
 from datetime import datetime
 import random
+
+from .models import Book
 
 def current_time(request):
     now = datetime.now().strftime("%H:%M:%S")
@@ -15,3 +17,15 @@ def random_number(request):
 def about_me(request):
     return HttpResponse("<h1>Я</h1><p>Чынгызхан</p>")
 
+class BookListView(ListView):
+    model = Book
+    template_name = 'books/book_list.html'  
+    context_object_name = 'books'
+
+class BookDetailView(DetailView):
+    model = Book
+    template_name = 'books/book_detail.html'  
+    context_object_name = 'book'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Book, pk=self.kwargs.get('pk'))
