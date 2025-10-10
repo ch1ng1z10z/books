@@ -1,0 +1,19 @@
+<h1>Добавить заказ</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  <input type="text" name="customer_name" placeholder="Имя" required><br>
+  <input type="email" name="email" placeholder="Email" required><br>
+  <input type="text" name="phone" placeholder="Телефон"><br>
+  <textarea name="address" placeholder="Адрес"></textarea><br>
+
+  <select name="book" required>
+    {% for book in books %}
+      <option value="{{ book.id }}">{{ book.title }}</option>
+    {% endfor %}
+  </select><br>
+
+  <input type="number" name="quantity" value="1" min="1"><br>
+
+  <button type="submit">Сохранить</button>
+</form>

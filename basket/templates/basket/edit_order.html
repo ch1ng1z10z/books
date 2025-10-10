@@ -1,0 +1,19 @@
+<h1>Редактировать заказ</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  <input type="text" name="customer_name" value="{{ order.customer_name }}" required><br>
+  <input type="email" name="email" value="{{ order.email }}" required><br>
+  <input type="text" name="phone" value="{{ order.phone }}"><br>
+  <textarea name="address">{{ order.address }}</textarea><br>
+
+  <select name="book" required>
+    {% for book in books %}
+      <option value="{{ book.id }}" {% if book.id == order.book.id %}selected{% endif %}>{{ book.title }}</option>
+    {% endfor %}
+  </select><br>
+
+  <input type="number" name="quantity" value="{{ order.quantity }}" min="1"><br>
+
+  <button type="submit">Сохранить</button>
+</form>
