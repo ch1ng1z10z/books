@@ -11,6 +11,27 @@
   <p><a href="{{ book.book_audio }}" target="_blank">🎧 Слушать аудиокнигу</a></p>
 {% endif %}
 
-<p><em>Добавлено: {{ book.created_at }}</em></p>
+<p><em>Добавлено: {{ book.created_at|date:"d.m.Y H:i" }}</em></p>
+
+<hr>
+
+<h2>Отзывы</h2>
+
+{% if reviews %}
+  <p><strong>Средняя оценка:</strong> ⭐ {{ average_rating }}/5</p>
+  <ul>
+    {% for review in reviews %}
+      <li style="margin-bottom: 10px;">
+        <strong>Оценка:</strong> {{ review.rating }} / 5<br>
+        {{ review.text }}<br>
+        <em>Добавлено: {{ review.created_at|date:"d.m.Y H:i" }}</em>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Пока нет отзывов.</p>
+{% endif %}
+
+<hr>
 
 <p><a href="{% url 'book_list' %}">← Назад к списку</a></p>

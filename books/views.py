@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from django.views.generic import ListView, DetailView
 from datetime import datetime
 import random
-
 from .models import Book
 
 def current_time(request):
@@ -26,6 +25,12 @@ class BookDetailView(DetailView):
     model = Book
     template_name = 'books/book_detail.html'  
     context_object_name = 'book'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['reviews'] = self.object.reviews.all()
+        context['average_rating'] = self.object.average_rating()
+        return context
 
     def get_object(self, queryset=None):
         return get_object_or_404(Book, pk=self.kwargs.get('pk'))
