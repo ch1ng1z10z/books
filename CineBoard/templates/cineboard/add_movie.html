@@ -1,0 +1,5 @@
+<h2>{% if movie %}Редактировать{% else %}Добавить{% endif %} фильм</h2>
+<form method="POST">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить</button>
+</form>

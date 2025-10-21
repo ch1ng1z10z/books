@@ -13,3 +13,4 @@ class Order(models.Model):
     def __str__(self):
         return f"Заказ {self.customer_name} — {self.book.title}"
 
+

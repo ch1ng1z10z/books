@@ -1,0 +1,30 @@
+{% extends 'all_products.html' %}
+
+{% block page_title %}
+Одежда женская
+{% endblock %}
+
+{% block products %}
+{% for i in products %}
+    {% if 'женская одежда' in i.tags.values_list 'name', flat=True) %}
+    <div class="center_film" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+        <div class="card" style="width: 18rem; text-align: center;">
+            <div class="card-body">
+                <h5 class="card-title">{{ i.title }}</h5>
+                <p class="card-text">{{ i.description }}</p>
+                <p class="card-text">{{ i.created_at }}</p>
+            </div>
+            <p>
+                Теги:
+                {% for tag in i.tags.all %}
+                    {{ tag.name }}{% if not forloop.last %}, {% endif %}
+                {% empty %}
+                    Тегов нет
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+    <br>
+    {% endif %}
+{% endfor %}
+{% endblock %}

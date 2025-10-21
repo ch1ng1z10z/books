@@ -1,0 +1,5 @@
+<h2>Вы уверены, что хотите удалить заказ?</h2>
+<form method="post">{% csrf_token %}
+    <button type="submit">Удалить</button>
+    <a href="{% url 'order_list' %}">Отмена</a>
+</form>
