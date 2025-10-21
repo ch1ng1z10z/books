@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список книг</title>
+</head>
+<body>
+    <h1>Список книг</h1>
+    
+    {% for book in object_list %}
+        <p>{{ book.title }} — {{ book.author }}</p>
+    {% empty %}
+        <p>Нет книг</p>
+    {% endfor %}
+    
+</body>
+</html>
